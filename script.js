@@ -6,8 +6,8 @@ async function loadPublications() {
     const listContainer = document.getElementById("pubs-list");
     
     try {
-        // Fetch publications XML database
-        const response = await fetch("publications.xml");
+        // Fetch publications XML database with a cache buster
+        const response = await fetch("publications.xml?t=" + new Date().getTime());
         
         if (!response.ok) {
             throw new Error("لم يتم العثور على قاعدة بيانات المنشورات.");
