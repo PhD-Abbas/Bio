@@ -99,8 +99,8 @@ html, body {
 
 /* Logo Styling */
 .logo-wrapper {
-    width: 140px;
-    height: 140px;
+    width: 210px;
+    height: 210px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -376,8 +376,8 @@ html, body {
         padding: 40px 18px 60px;
     }
     .logo-wrapper {
-        width: 120px;
-        height: 120px;
+        width: 180px;
+        height: 180px;
     }
     .name {
         font-size: 2.1rem;
