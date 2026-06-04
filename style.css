@@ -119,7 +119,7 @@ html, body {
 
 /* Name */
 .name {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
     font-weight: 800;
     letter-spacing: -0.5px;
     margin-bottom: 18px;
@@ -380,7 +380,7 @@ html, body {
         height: 180px;
     }
     .name {
-        font-size: 2.1rem;
+        font-size: 1.6rem;
     }
     .chip {
         padding: 8px 16px;
