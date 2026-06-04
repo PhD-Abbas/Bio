@@ -30,15 +30,14 @@ def generate_publications_xml():
     # Root element
     root = ET.Element("publications")
     
-    # Scan pubs directory
+    # Scan pubs directory for PDFs
     pdf_files = []
     if os.path.exists(pubs_dir):
         for file in os.listdir(pubs_dir):
             if file.lower().endswith('.pdf'):
                 pdf_files.append(file)
                 
-    # Sort files alphabetically or by date
-    # Let's sort alphabetically for now, but we can also get modified time
+    # Sort files alphabetically
     pdf_files.sort()
     
     for file in pdf_files:
