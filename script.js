@@ -119,8 +119,19 @@ function openPdfModal(url, title) {
     const modalTitle = document.getElementById("modal-title");
     
     modalTitle.textContent = title;
-    // Append #view=FitH to try and force mobile browsers to display rather than download, though iOS Safari handles it natively.
-    viewer.src = url + "#view=FitH";
+    
+    // Check if user is on mobile
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // Construct full absolute URL for Google Docs Viewer
+        const baseUrl = window.location.href.split('?')[0].replace(/index\.html$/, '').replace(/\/$/, '');
+        const fullUrl = baseUrl + '/' + url;
+        viewer.src = "https://docs.google.com/viewer?url=" + encodeURIComponent(fullUrl) + "&embedded=true";
+    } else {
+        viewer.src = url + "#view=FitH";
+    }
+    
     downloadBtn.href = url;
     // Set the download attribute so the user can download the file
     downloadBtn.setAttribute("download", title + ".pdf");
