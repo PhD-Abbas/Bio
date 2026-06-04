@@ -1,0 +1,404 @@
+:root {
+    /* Premium Anodized Titanium & Silver Theme */
+    --bg-dark: #121417;
+    --bg-light: #202429;
+    --bg-radial: radial-gradient(circle at 50% 30%, #2e343d 0%, #121417 100%);
+    
+    --metal-silver: #e2e8f0;
+    --metal-gray: #94a3b8;
+    --metal-border: rgba(255, 255, 255, 0.08);
+    --metal-border-hover: rgba(255, 255, 255, 0.2);
+    
+    --glass-bg: rgba(30, 35, 45, 0.45);
+    --glass-bg-hover: rgba(45, 52, 68, 0.6);
+    --glass-blur: blur(16px);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    
+    --accent-telegram: #229ED9;
+    --accent-whatsapp: #25D366;
+    --accent-email: #f1f5f9;
+    
+    --font-arabic: 'Cairo', sans-serif;
+    --font-english: 'Outfit', sans-serif;
+    
+    --radius-chip: 50px;
+    --radius-card: 16px;
+    --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-arabic);
+    background: var(--bg-radial);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Grain Overlay (Metallic Texture) */
+.grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* SVG texture using fractal noise for dynamic grainy metal effect */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Container Layout */
+.container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Header Section */
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Logo Styling */
+.logo-wrapper {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.logo-wrapper:hover {
+    transform: scale(1.04) rotate(2deg);
+}
+.logo-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.logo-svg-fallback {
+    width: 100%;
+    height: 100%;
+}
+
+/* Name */
+.name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #ffffff 30%, #b2bdcd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Social Media Chips */
+.social-chips {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 6px;
+    width: 100%;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: var(--radius-chip);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 1px solid var(--metal-border);
+    backdrop-filter: var(--glass-blur);
+    background: var(--glass-bg);
+}
+
+/* Telegram Chip */
+.telegram-chip {
+    color: var(--text-primary);
+}
+.telegram-chip i {
+    color: var(--accent-telegram);
+}
+.telegram-chip:hover {
+    background: rgba(34, 158, 217, 0.15);
+    border-color: rgba(34, 158, 217, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 158, 217, 0.15);
+}
+
+/* WhatsApp Chip */
+.whatsapp-chip {
+    color: var(--text-primary);
+}
+.whatsapp-chip i {
+    color: var(--accent-whatsapp);
+}
+.whatsapp-chip:hover {
+    background: rgba(37, 211, 102, 0.12);
+    border-color: rgba(37, 211, 102, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.12);
+}
+
+/* Email Chip */
+.email-chip {
+    color: var(--text-primary);
+}
+.email-chip i {
+    color: var(--accent-email);
+}
+.email-chip:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Main Section Title */
+.publications-section {
+    width: 100%;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: right;
+    color: var(--text-primary);
+    border-right: 4px solid var(--metal-silver);
+    padding-right: 12px;
+    animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Publications Cards List */
+.publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+/* Glass Card Style for Publications */
+.pub-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--metal-border);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition);
+    opacity: 0; /* Animated in via JS */
+    transform: translateY(24px);
+}
+
+.pub-card:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--metal-border-hover);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.pub-card:active {
+    transform: translateY(-1px) scale(1.0);
+}
+
+.pub-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+    flex: 1;
+}
+
+.pub-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+.pub-card:hover .pub-title {
+    color: #ffffff;
+}
+
+.pub-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8rem;
+    color: var(--metal-gray);
+    font-family: var(--font-english);
+    direction: ltr;
+    justify-content: flex-end;
+}
+
+.pub-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pub-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    border: 1px solid var(--metal-border);
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+.pub-card:hover .pub-icon-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Skeleton Loading State */
+.skeleton-card {
+    height: 88px;
+    border-radius: var(--radius-card);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 75%);
+    background-size: 200% 100%;
+    animation: loadingShimmer 1.5s infinite;
+    border: 1px solid var(--metal-border);
+}
+
+/* Empty State Card */
+.empty-state {
+    text-align: center;
+    padding: 40px 24px;
+    border-radius: var(--radius-card);
+    border: 1px dashed var(--metal-border);
+    background: rgba(255, 255, 255, 0.01);
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+.empty-state i {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* Footer Section */
+.footer {
+    margin-top: 60px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* Reveal Animation Class from IntersectionObserver */
+.pub-card.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes loadingShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .container {
+        padding: 40px 18px 60px;
+    }
+    .logo-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+    .name {
+        font-size: 2.1rem;
+    }
+    .chip {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    .pub-card {
+        padding: 16px 18px;
+    }
+    .pub-title {
+        font-size: 1.05rem;
+    }
+    .pub-icon-wrapper {
+        margin-right: 12px;
+        width: 40px;
+        height: 40px;
+    }
+}

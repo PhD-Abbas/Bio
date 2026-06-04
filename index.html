@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الصفحة الشخصية والمنشورات العلمية لعباس. ملفات ومقالات أكاديمية وعلمية في الطب والعلوم.">
+    <title>عباس — المنشورات العلمية</title>
+    
+    <!-- Google Fonts for premium Arabic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for modern social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Grain Noise Overlay -->
+    <div class="grain"></div>
+
+    <div class="container">
+        <!-- Logo Section -->
+        <header class="header">
+            <div class="logo-wrapper">
+                <!-- Tries to load logo.png, falls back to SVG on error -->
+                <img src="logo.png" alt="الشعار" class="logo-image" id="logo-img" onerror="handleLogoError()">
+                
+                <div id="logo-fallback" class="logo-svg-fallback">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+                        <defs>
+                            <!-- Linear gradients for premium metallic look -->
+                            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="50%" stop-color="#e0e0e0" />
+                                <stop offset="100%" stop-color="#9e9e9e" />
+                            </linearGradient>
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="6" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+                        <!-- Mortar and Pestle Bowl -->
+                        <path d="M120,170 C120,230 280,230 280,170 C280,165 120,165 120,170 Z" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M150,217 L250,217" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+                        
+                        <!-- Pestle -->
+                        <line x1="140" y1="130" x2="165" y2="175" stroke="#ffffff" stroke-width="12" stroke-linecap="round" />
+                        
+                        <!-- Asclepius Snake wrapping around a central staff -->
+                        <!-- Staff -->
+                        <line x1="200" y1="90" x2="200" y2="175" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.4" />
+                        <!-- Snake -->
+                        <path d="M185,160 Q200,145 215,160 T200,180 T185,150 Q200,120 215,130 T200,105" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+                        <!-- Snake head -->
+                        <path d="M195,105 C195,100 205,100 205,105 Z" fill="#ffffff" />
+                        
+                        <!-- Arabic calligraphy text "أسكليبيوس" recreated in SVG paths -->
+                        <text x="200" y="65" font-family="'Cairo', sans-serif" font-weight="800" font-size="28" fill="#ffffff" text-anchor="middle" letter-spacing="1">أَسْكِلِيبْيُوسْ</text>
+                    </svg>
+                </div>
+            </div>
+            
+            <h1 class="name">عباس</h1>
+            
+            <!-- Social Links Chips -->
+            <div class="social-chips">
+                <a href="https://t.me/username" target="_blank" class="chip telegram-chip" id="social-telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span>تيليجرام</span>
+                </a>
+                <a href="https://wa.me/phone" target="_blank" class="chip whatsapp-chip" id="social-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>واتساب</span>
+                </a>
+                <a href="mailto:email@example.com" class="chip email-chip" id="social-email">
+                    <i class="far fa-envelope"></i>
+                    <span>البريد الإلكتروني</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Publications Section -->
+        <main class="publications-section">
+            <h2 class="section-title">منشوراتي العلمية</h2>
+            
+            <!-- Publications Dynamic Container -->
+            <div class="publications-list" id="pubs-list">
+                <!-- Skeleton Loader (shows while loading XML) -->
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>جميع الحقوق محفوظة © <span id="current-year"></span> عباس</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Handle current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Safe fallback toggle for logo image vs svg
+        function handleLogoError() {
+            const img = document.getElementById('logo-img');
+            const fallback = document.getElementById('logo-fallback');
+            if (img) img.style.display = 'none';
+            if (fallback) fallback.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
