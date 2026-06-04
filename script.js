@@ -39,9 +39,12 @@ async function loadPublications() {
             const pdfUrl = `pubs/${encodeURIComponent(filename)}`;
             
             const card = document.createElement("a");
-            card.href = pdfUrl;
-            card.target = "_blank";
+            card.href = "javascript:void(0)";
             card.className = "pub-card";
+            card.onclick = (e) => {
+                e.preventDefault();
+                openPdfModal(pdfUrl, title);
+            };
             card.style.transitionDelay = `${index * 0.08}s`; // staggered domino animation delay
             
             card.innerHTML = `
@@ -107,3 +110,43 @@ function setupScrollReveal() {
         observer.observe(card);
     });
 }
+
+// Modal Functions
+function openPdfModal(url, title) {
+    const modal = document.getElementById("pdf-modal");
+    const viewer = document.getElementById("pdf-viewer");
+    const downloadBtn = document.getElementById("pdf-download-btn");
+    const modalTitle = document.getElementById("modal-title");
+    
+    modalTitle.textContent = title;
+    // Append #view=FitH to try and force mobile browsers to display rather than download, though iOS Safari handles it natively.
+    viewer.src = url + "#view=FitH";
+    downloadBtn.href = url;
+    // Set the download attribute so the user can download the file
+    downloadBtn.setAttribute("download", title + ".pdf");
+    
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+// Setup modal close handlers once DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("pdf-modal");
+    const closeBtn = document.getElementById("close-modal");
+    
+    if(closeBtn) {
+        closeBtn.onclick = () => {
+            modal.classList.remove("active");
+            document.getElementById("pdf-viewer").src = "";
+            document.body.style.overflow = "auto";
+        };
+    }
+    
+    window.onclick = (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("active");
+            document.getElementById("pdf-viewer").src = "";
+            document.body.style.overflow = "auto";
+        }
+    };
+});

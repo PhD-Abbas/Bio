@@ -91,7 +91,7 @@
 
         <!-- Main Publications Section -->
         <main class="publications-section">
-            <h2 class="section-title">منشوراتي العلمية</h2>
+            <h2 class="section-title">منشوراتي</h2>
             
             <!-- Publications Dynamic Container -->
             <div class="publications-list" id="pubs-list">
@@ -106,6 +106,24 @@
         <footer class="footer">
             <p>© <span id="current-year"></span> Abbas J.K. Dherish</p>
         </footer>
+    </div>
+    
+    <!-- PDF Viewer Modal -->
+    <div id="pdf-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">عرض الملف</h3>
+                <span class="close-button" id="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdf-viewer" src="" frameborder="0"></iframe>
+            </div>
+            <div class="modal-footer">
+                <a id="pdf-download-btn" href="" download class="download-btn">
+                    <i class="fas fa-download"></i> تحميل
+                </a>
+            </div>
+        </div>
     </div>
     <script>
         document.write('<script src="script.js?v=' + new Date().getTime() + '"><\/script>');
