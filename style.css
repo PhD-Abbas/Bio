@@ -40,10 +40,18 @@ html, body {
     width: 100%;
     min-height: 100vh;
     font-family: var(--font-arabic);
-    background: var(--bg-radial);
+    background: linear-gradient(-45deg, #0f1115, #1e2228, #2e343d, #1a1e24);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: var(--text-primary);
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Grain Overlay (Metallic Texture) */
@@ -522,25 +530,4 @@ html, body {
         border-radius: 0;
         border: none;
     }
-}
-
-/* Animated Ambient Line */
-.ambient-line {
-    position: fixed;
-    top: -100px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-    filter: blur(4px);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-    z-index: 1; /* Below the container (z-index: 10) but above the base background */
-    pointer-events: none;
-    animation: scanline 7s ease-in-out infinite;
-}
-
-@keyframes scanline {
-    0%, 100% { top: -100px; opacity: 0; }
-    10%, 90% { opacity: 1; }
-    50% { top: 110vh; opacity: 1; }
 }
