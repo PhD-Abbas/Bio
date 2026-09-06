@@ -172,6 +172,17 @@ html, body {
     box-shadow: 0 6px 20px rgba(34, 158, 217, 0.15);
 }
 
+/* MgDar Chip */
+.mgdar-chip {
+    color: var(--text-primary);
+}
+.mgdar-chip:hover {
+    background: rgba(20, 184, 166, 0.15); /* Teal */
+    border-color: rgba(20, 184, 166, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.15);
+}
+
 /* WhatsApp Chip */
 .whatsapp-chip {
     color: var(--text-primary);
