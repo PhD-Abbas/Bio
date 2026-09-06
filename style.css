@@ -177,10 +177,10 @@ html, body {
     color: var(--text-primary);
 }
 .mgdar-chip:hover {
-    background: rgba(20, 184, 166, 0.15); /* Teal */
-    border-color: rgba(20, 184, 166, 0.4);
+    background: rgba(65, 187, 167, 0.15); /* #41bba7 */
+    border-color: rgba(65, 187, 167, 0.4);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.15);
+    box-shadow: 0 6px 20px rgba(65, 187, 167, 0.15);
 }
 
 /* WhatsApp Chip */
